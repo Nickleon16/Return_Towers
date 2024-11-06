@@ -1,17 +1,15 @@
 import os
+from Physics import physics_loss
 import torch
 import matplotlib.pyplot as plt
 from NN import Net
-from Physics import physics_loss
 from Data import t_test, f_train, u_train, i_train, data_train, f_test, u_test, i_test, data_test
 
-# Names of the models
 # Hice un cambio para ver que pasaba
 # _______________________________________________________________________________
 model_path_1 = 'NN_model_2.pth'
 # model_path_2 = 'PINN_model_1.pth'
 
-# Create new or load the models
 # _______________________________________________________________________________
 window_size = 4
 input_dim = 2 * window_size
@@ -35,15 +33,12 @@ else:
 #    losses2 = net2.fit(f_train, u_train, i_train, data_train[:, 0], window_size)  # data train
 #    torch.save(net2.state_dict(), model_path_2)
 
-
-# Test
 # _______________________________________________________________________________
 prediction_1 = net1.predict(u_test, i_test, window_size)
 # prediction_2 = net2.predict(f_te u_test, i_test, window_size)
 
 plt.figure()
 plt.plot(t_test, data_test[:, 0], alpha=1, label='data_displacement')
-# plt.plot(t_test, simulation_test[:, 0], alpha=0.8, label='sim_displacement')
 plt.plot(t_test[:(len(t_test)-window_size+1)], prediction_1[:, 0], alpha=0.7, label='NN')
 plt.legend()
 plt.ylabel('Dis (mm)')
@@ -51,7 +46,6 @@ plt.xlabel('Time (s)')
 
 #plt.figure()
 #plt.plot(t_test, data_test[:, 0], alpha=0.8, label='data_displacement')
-# plt.plot(t_test, simulation_test[:, 0], alpha=0.8, label='sim_displacement')
 #plt.plot(t_test[:(len(t_test)-window_size+1)], prediction_2[:, 0], alpha=0.7, label='PINN')
 #plt.legend()
 #plt.ylabel('Dis (mm)')
