@@ -6,6 +6,7 @@ from Physics import physics_loss
 from Data import t_test, f_train, u_train, i_train, data_train, f_test, u_test, i_test, data_test
 
 # Names of the models
+# Hice un cambio para ver que pasaba
 # _______________________________________________________________________________
 model_path_1 = 'NN_model_2.pth'
 # model_path_2 = 'PINN_model_1.pth'
